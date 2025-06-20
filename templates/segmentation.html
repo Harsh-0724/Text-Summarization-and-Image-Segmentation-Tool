@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Image Segmentation Result</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #2e2b44, #4f3b6f);
+      color: #eee;
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.25);
+    }
+
+    .images-container {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 900px;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .image-box {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      padding: 20px;
+      text-align: center;
+      max-width: 400px;
+      flex: 1 1 350px;
+      user-select: none;
+    }
+
+    .image-box img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+    }
+
+    .image-box p {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #d3c8f5;
+      font-size: 1rem;
+    }
+
+    a.button-back {
+      margin-top: 50px;
+      text-decoration: none;
+      background-color: #9575cd;
+      color: #2e2b44;
+      padding: 14px 32px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 5px 15px rgba(149, 117, 205, 0.7);
+    }
+
+    a.button-back:hover {
+      background-color: #b39ddb;
+      color: #2e2b44;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #bfb8e8;
+      text-align: center;
+      width: 100%;
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Image Segmentation Result</h1>
+
+  <div class="images-container">
+    <div class="image-box">
+      <img src="{{ url_for('uploaded_file', filename=original) }}" alt="Original Image" />
+      <p>Original Image</p>
+    </div>
+    <div class="image-box">
+      <img src="{{ url_for('uploaded_file', filename=segmented) }}" alt="Segmented Image" />
+      <p>Segmented Image</p>
+    </div>
+  </div>
+
+  <a href="{{ url_for('index') }}" class="button-back">← Back to Home</a>
+
+  <footer>
+    &copy; 2025 Your AI App — Powered by Flask & OpenCV
+  </footer>
+</body>
+</html>

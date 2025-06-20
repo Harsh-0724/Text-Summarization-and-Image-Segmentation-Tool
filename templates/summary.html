@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Summary Results - AI Text Summarization</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #4b2671, #7a5299);
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    }
+
+    .summary-container {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      padding: 30px 25px;
+      max-width: 900px;
+      width: 100%;
+      color: #e0d9f2;
+      user-select: text;
+    }
+
+    .summary-container h2 {
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #d1c4e9;
+    }
+
+    ul.summary-list {
+      list-style-type: disc;
+      margin-left: 20px;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+
+    .graph-container {
+      margin-top: 40px;
+      width: 100%;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      box-shadow: inset 0 0 15px rgba(255,255,255,0.15);
+      overflow: auto;
+    }
+
+    a.button-back {
+      margin-top: 40px;
+      text-decoration: none;
+      background-color: #b39ddb;
+      color: #3f2b5a;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(179, 157, 219, 0.6);
+    }
+
+    a.button-back:hover {
+      background-color: #d1c4e9;
+      color: #4b2671;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #cfc8e6;
+      text-align: center;
+      width: 100%;
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Summary Results</h1>
+
+  <div class="summary-container">
+    <h2>Key Sentences</h2>
+    <ul class="summary-list">
+      {% for sentence in summary %}
+        <li>{{ sentence }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="graph-container">
+    {{ graph_html|safe }}
+  </div>
+
+  <a href="{{ url_for('index') }}" class="button-back">← Back to Home</a>
+
+  <footer>
+    &copy; 2025 Your AI App — Powered by Flask & OpenCV
+  </footer>
+</body>
+</html>
